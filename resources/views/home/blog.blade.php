@@ -19,7 +19,7 @@
 
                           <form action="{{url('add_cart',$data->id)}}" method="post">
                               @csrf
-                              <input type="number" min="1" max="">
+                              <input type="number" min="1" name="qty" required>
                               <br><br>
                               <input class="btn btn-info" type="submit" value="Add to Cart">
 

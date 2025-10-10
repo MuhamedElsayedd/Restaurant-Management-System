@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+
 use App\Models\User;
 use App\Models\Food;
 
@@ -36,7 +39,24 @@ class HomeController extends Controller
     public function add_cart(Request $request, $id)
     {
         if (Auth::id()) {
-            echo "This is Your Cart";
+            $food = Food::find($id);
+
+            $cart_title = $food->title;
+            $cart_details = $food->details;
+            $cart_image = $food->image;
+            $cart_price = Str::remove('$', $food->price);
+
+            $data = new Cart;
+            $data->title = $cart_title;
+            $data->details = $cart_details;
+            $data->price = $cart_price * $request->qty;
+            $data->image = $cart_image;
+            $data->quantity = $request->qty;
+            $data->userid = Auth::user()->id;
+
+            $data->save();
+
+            return redirect()->back();
         } else {
             return redirect("login");
         }
