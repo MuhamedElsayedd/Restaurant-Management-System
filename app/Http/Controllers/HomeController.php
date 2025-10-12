@@ -6,7 +6,7 @@ use App\Models\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
-
+use App\Models\Book;
 use App\Models\User;
 use App\Models\Food;
 use App\Models\Order;
@@ -106,6 +106,20 @@ class HomeController extends Controller
 
             $data->delete();
         }
+
+        return redirect()->back();
+    }
+
+    public function book_table(Request $request)
+    {
+        $book = new Book;
+
+        $book->phone = $request->phone;
+        $book->guest = $request->n_guest;
+        $book->date = $request->date;
+        $book->time = $request->time;
+
+        $book->save();
 
         return redirect()->back();
     }
