@@ -96,10 +96,9 @@ This system supports multiple user roles. Typical role definitions:
 
 | Role           | Permissions                                      |
 |----------------|--------------------------------------------------|
-| **Admin**       | Full access: users, menus, orders, settings, etc. |
-| **Waiter**       | Create orders, view assigned tables, update order status (to some degree) |
-| **Kitchen / Chef** | See orders in the kitchen, mark items as “cooked” or “served” |
-| **Viewer / Guest** | Read-only access to certain views (dashboard, reports) |
+| **Admin**       | Full access: users, menus, orders, and settings |
+| **User**        | Can browse menu, place orders, and view their order history |
+| **Guest**       | Read-only access to public pages (home, menu, contact, etc.) |
 
 ---
 
