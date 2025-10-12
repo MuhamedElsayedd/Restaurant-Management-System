@@ -85,8 +85,7 @@ Follow these steps to get this project running on your local machine:
 - Log in with admin credentials (if seeded)  
 - Add menu categories and food items  
 - Create new orders, assign to tables  
-- Monitor live orders status  
-- Generate sales reports
+- Monitor live orders status 
 
 ---
 
@@ -98,7 +97,7 @@ This system supports multiple user roles. Typical role definitions:
 |----------------|--------------------------------------------------|
 | **Admin**       | Full access: users, menus, orders, and settings |
 | **User**        | Can browse menu, place orders, and view their order history |
-| **Guest**       | Read-only access to public pages (home, menu, contact, etc.) |
+| **Guest**       | Read-only access to public pages (home, menu, etc.) |
 
 ---
 
