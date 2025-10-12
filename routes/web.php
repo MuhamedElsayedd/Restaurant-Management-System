@@ -30,6 +30,16 @@ Route::get('/remove_cart/{id}', [HomeController::class, 'remove_cart']);
 
 Route::post('/confirm_order', [HomeController::class, 'confirm_order']);
 
+Route::get('/orders', [AdminController::class, 'orders']);
+
+
+// Change Status of Order *Admin*
+Route::get('on_the_way/{id}', [AdminController::class, 'on_the_way']);
+
+Route::get('deliver_order/{id}', [AdminController::class, 'deliver_order']);
+
+Route::get('cancel_order/{id}', [AdminController::class, 'cancel_order']);
+
 
 
 Route::middleware([
