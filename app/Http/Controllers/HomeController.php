@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 
 use App\Models\User;
 use App\Models\Food;
-
+use App\Models\Order;
 
 class HomeController extends Controller
 {
@@ -69,5 +69,44 @@ class HomeController extends Controller
         $data = Cart::Where('userid', '=', $user_id)->get();
 
         return view('home.my_cart', compact('data'));
+    }
+
+    public function remove_cart($id)
+    {
+        $data = Cart::find($id);
+
+        $data->delete();
+
+        return redirect()->back();
+    }
+
+    public function confirm_order(Request $request)
+    {
+        $user_id = Auth::user()->id;
+
+        $cart = Cart::Where('userid', '=', $user_id)->get();
+
+        foreach ($cart as $cart) {
+            $order = new Order;
+
+            $order->name = $request->name;
+            $order->email = $request->email;
+            $order->phone = $request->phone;
+            $order->address = $request->address;
+
+            $order->title = $cart->title;
+            $order->quantity = $cart->quantity;
+            $order->price = $cart->price;
+
+            $order->image = $cart->image;
+
+            $order->save();
+
+            $data = Cart::find($cart->id);
+
+            $data->delete();
+        }
+
+        return redirect()->back();
     }
 }

@@ -26,6 +26,9 @@ Route::post('/add_cart/{id}', [HomeController::class, 'add_cart']);
 
 Route::get('/my_cart', [HomeController::class, 'my_cart']);
 
+Route::get('/remove_cart/{id}', [HomeController::class, 'remove_cart']);
+
+Route::post('/confirm_order', [HomeController::class, 'confirm_order']);
 
 
 

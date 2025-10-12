@@ -22,6 +22,22 @@
             padding: 10px;
             color: white;
         }
+
+        .div_center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        label {
+            display: inline-block;
+            width: 200px;
+        }
+
+        .div_deg {
+            padding: 20px;
+        }
     </style>
 </head>
 
@@ -103,8 +119,16 @@
                 <th>Price</th>
                 <th>quantity</th>
                 <th>Image</th>
+                <th>Remove</th>
 
             </tr>
+
+            <?php
+            $total_price = 0;
+
+
+            ?>
+
             @foreach($data as $data)
             <tr>
                 <td>{{$data->title}}</td>
@@ -113,12 +137,51 @@
                 <td>
                     <img width="150" src="food_img/{{$data->image}}" alt="">
                 </td>
+                <td>
+                    <a onclick="return confirm('Are you sure to remove this?')" class="btn btn-danger" href="{{url('remove_cart',$data->id)}}">Remove</a>
+                </td>
 
             </tr>
+
+            <?php
+            $total_price = $total_price + $data->price;
+
+            ?>
             @endforeach
 
         </table>
 
+        <h2> Total Price : ${{$total_price}}</h2>
+
+    </div>
+
+    <div class="div_center">
+        <form action="{{url('confirm_order')}}" method="post">
+            @csrf
+            <div class="div_deg">
+                <label for="">Name</label>
+                <input type="text" name="name" value="{{Auth()->user()->name}}">
+            </div>
+
+            <div class="div_deg">
+                <label for="">Email</label>
+                <input type="text" name="email" value="{{Auth()->user()->email}}">
+            </div>
+
+            <div class="div_deg">
+                <label for="">Phone</label>
+                <input type="text" name="phone" value="{{Auth()->user()->phone}}">
+            </div class="div_deg">
+
+            <div class="div_deg">
+                <label for="">Address</label>
+                <input type="text" name="address" value="{{Auth()->user()->address}}">
+            </div class="div_deg">
+
+            <div class="div_deg">
+                <input type="submit" class="btn btn-info" value="Confirm Order">
+            </div>
+        </form>
     </div>
 
 
