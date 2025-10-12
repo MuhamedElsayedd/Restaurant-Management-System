@@ -30,6 +30,12 @@
               @if (Route::has('login'))
 
               @auth
+              <li class="nav-item">
+                  <a class="nav-link" href="{{url('my_cart')}}">
+                      <i class="ti-shopping-cart"></i> Cart
+                  </a>
+              </li>
+
 
               <form action="{{route('logout')}}" method="POST">
                   @csrf
