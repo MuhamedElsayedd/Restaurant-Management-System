@@ -117,14 +117,19 @@ class HomeController extends Controller
 
     public function book_table(Request $request)
     {
-        $book = new Book;
 
-        $book->phone = $request->phone;
-        $book->guest = $request->n_guest;
-        $book->date = $request->date;
-        $book->time = $request->time;
+        if (Auth::id()) {
+            $book = new Book;
 
-        $book->save();
+            $book->phone = $request->phone;
+            $book->guest = $request->n_guest;
+            $book->date = $request->date;
+            $book->time = $request->time;
+
+            $book->save();
+        } else {
+            return redirect("login");
+        }
 
         return redirect()->back();
     }
