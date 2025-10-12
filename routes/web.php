@@ -34,6 +34,9 @@ Route::get('/orders', [AdminController::class, 'orders']);
 
 Route::post('/book_table', [HomeController::class, 'book_table']);
 
+Route::get('/reservations', [AdminController::class, 'reservations']);
+
+
 
 // Change Status of Order *Admin*
 Route::get('on_the_way/{id}', [AdminController::class, 'on_the_way']);
