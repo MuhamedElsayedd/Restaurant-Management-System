@@ -4,6 +4,7 @@ readme: |
   A web-based Restaurant Management System built with Laravel, designed to manage orders, menu items, tables, and overall operations of a restaurant in an efficient and user-friendly way.
 
   ---
+  
 
   ## 🛠️ Features
 
