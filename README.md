@@ -5,7 +5,6 @@ readme: |
 
   ---
   
-
   ## 🛠️ Features
 
   - **Dashboard & Analytics** — get a quick overview of sales, orders, and key metrics  
